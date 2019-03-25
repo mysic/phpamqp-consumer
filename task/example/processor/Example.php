@@ -6,12 +6,12 @@
  * Time: 17:01
  */
 
-namespace Task\BI\Processor;
+namespace task\example\processor;
 
 
 use PhpAmqpLib\Message\AMQPMessage;
-use Core\Processor;
-use Core\Storage;
+use core\Processor;
+use core\Storage;
 use Medoo\Medoo;
 
 class Example extends Processor

@@ -6,7 +6,7 @@
  * Time: 14:18
  */
 
-namespace Core;
+namespace core;
 
 use PhpAmqpLib\Message\AMQPMessage;
 

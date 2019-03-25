@@ -6,7 +6,7 @@
  * Time: 19:15
  */
 
-namespace Task\BI\Processor;
+namespace task\example\processor;
 
 
 trait Document

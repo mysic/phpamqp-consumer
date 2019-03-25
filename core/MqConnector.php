@@ -6,7 +6,7 @@
  * Time: 13:48
  */
 
-namespace Core;
+namespace core;
 
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 

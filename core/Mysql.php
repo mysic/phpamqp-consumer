@@ -6,7 +6,7 @@
  * Time: 14:54
  */
 
-namespace Core;
+namespace core;
 
 use Medoo\Medoo;
 

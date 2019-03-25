@@ -6,7 +6,7 @@
  * Time: 9:42
  */
 
-namespace Core;
+namespace core;
 
 
 abstract class Storage

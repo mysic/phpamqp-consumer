@@ -6,9 +6,9 @@
  * Time: 10:02
  */
 
-namespace Task\BI\Storage;
+namespace task\example\storage;
 
-use Core\Storage;
+use core\Storage;
 use Elasticsearch\ClientBuilder;
 
 class Elastic extends Storage

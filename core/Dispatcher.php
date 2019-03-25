@@ -5,7 +5,7 @@
  * Date: 2018\12\17 0017
  * Time: 14:41
  */
-namespace Core;
+namespace core;
 
 use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
