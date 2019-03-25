@@ -57,11 +57,11 @@ if(!\strlen($argv[3]) > 50) {
     echo 'error: storage name length must be less than 50 letters',PHP_EOL;
     exit(0);
 }
-$projectName = \ucfirst($argv[1]);
+$projectName = \lcfirst($argv[1]);
 $processorName = \ucfirst($argv[2]);
 $storageName = \ucfirst($argv[3]);
 //mq connector init
-$mqConfigFilePath = 'Task' . DIRECTORY_SEPARATOR . $projectName . DIRECTORY_SEPARATOR . 'Config' . DIRECTORY_SEPARATOR . 'messageQueue.php';
+$mqConfigFilePath = 'task' . DIRECTORY_SEPARATOR . $projectName . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'messageQueue.php';
 if (!\file_exists($mqConfigFilePath)) {
     echo 'error: cannot find message-queue config file ', PHP_EOL . 'file path: ' . $mqConfigFilePath . PHP_EOL .  'base path: ' . getcwd() .  PHP_EOL;
     exit(0);
@@ -69,13 +69,13 @@ if (!\file_exists($mqConfigFilePath)) {
 $mqConfig =  require_once $mqConfigFilePath;
 $mqConnector = Core\MqConnector::connect($mqConfig);
 //storage init
-$storageConfigFilePath = 'Task' . DIRECTORY_SEPARATOR . $projectName . DIRECTORY_SEPARATOR . 'Config' . DIRECTORY_SEPARATOR .  'storage.php';
+$storageConfigFilePath = 'task' . DIRECTORY_SEPARATOR . $projectName . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR .  'storage.php';
 if (!\file_exists($storageConfigFilePath)) {
     echo 'error: cannot find storage config file ', PHP_EOL . 'file path: ' . $storageConfigFilePath;
     exit(0);
 }
 $storageConfig = require_once $storageConfigFilePath;
-$storageFullyQualifiedName = 'Task\\' .$projectName. '\\Storage\\'. $storageName;
+$storageFullyQualifiedName = 'task\\' .$projectName. '\\storage\\'. $storageName;
 if (!\class_exists($storageFullyQualifiedName)) {
     echo 'storage model not exist';
     exit(0);
@@ -87,27 +87,27 @@ if (!$storage instanceof \Core\Storage) {
 }
 //db init
 $db = null;
-$dbConfigFilePath = 'Task' . DIRECTORY_SEPARATOR . $projectName . DIRECTORY_SEPARATOR . 'Config' . DIRECTORY_SEPARATOR .  'mysql.php';
+$dbConfigFilePath = 'task' . DIRECTORY_SEPARATOR . $projectName . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR .  'mysql.php';
 if(\file_exists($dbConfigFilePath)) {
     $dbConfig = require_once $dbConfigFilePath;
     if(!empty($dbConfig)) {
-        $db  = \Core\Mysql::instance($dbConfig);
+        $db  = \core\Mysql::instance($dbConfig);
     }
 }
 //processor init
-$processorConfigFilePath = 'Task' . DIRECTORY_SEPARATOR . $projectName . DIRECTORY_SEPARATOR . 'Config' . DIRECTORY_SEPARATOR . $argv[2] . '.php';
+$processorConfigFilePath = 'task' . DIRECTORY_SEPARATOR . $projectName . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . $argv[2] . '.php';
 if (!\file_exists($processorConfigFilePath)) {
     echo 'error: cannot find processor config file ', PHP_EOL . 'file path: ' . $processorConfigFilePath;
     exit(0);
 }
 $processorConfig = require_once $processorConfigFilePath;
-$processorFullyQualifiedName = 'Task\\' .$projectName. '\\Processor\\'. $processorName;
+$processorFullyQualifiedName = 'task\\' .$projectName. '\\processor\\'. $processorName;
 if (!\class_exists($processorFullyQualifiedName)) {
     echo 'business processor not exist';
     exit(0);
 }
 $processor = new $processorFullyQualifiedName($storage, $processorConfig, $db);
-if (!$processor instanceof \Core\Processor) {
+if (!$processor instanceof \core\Processor) {
     echo 'processor not instance of Processor Class';
     exit(0);
 }
@@ -120,7 +120,7 @@ unset($storageFullyQualifiedName, $processorFullyQualifiedName);
 
 
 try{
-    $dispatcher = new \Core\Dispatcher($processor, $mqConnector);
+    $dispatcher = new \core\Dispatcher($processor, $mqConnector);
     $dispatcher->run();
 } catch(\Exception $e) {
     echo 'error: ' . $e->getMessage(),PHP_EOL;
