@@ -1,5 +1,5 @@
 {
-    "name": "mysic/phpamqplib-publisher",
+    "name": "mysic/phpamqplib-consumer",
     "description": "消息队列消费者",
     "type": "library",
     "require": {
