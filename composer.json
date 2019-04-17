@@ -15,8 +15,5 @@
             "name": "jixiang",
             "email": "6817778@qq.com"
         }
-    ],
-    "autoload":{
-        "psr-4":{"MysicAMQP\\":"src/"}
-    }
+    ]
 }
