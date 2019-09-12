@@ -85,9 +85,9 @@ if (!$storage instanceof \Core\Storage) {
     echo 'storage model not instance of Storage Class';
     exit(0);
 }
-//db init
+//db init if exists db config file
 $db = null;
-$dbConfigFilePath = 'task' . DIRECTORY_SEPARATOR . $projectName . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR .  'mysql.php';
+$dbConfigFilePath = 'task' . DIRECTORY_SEPARATOR . $projectName . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR .  'db.php';
 if(\file_exists($dbConfigFilePath)) {
     $dbConfig = require_once $dbConfigFilePath;
     if(!empty($dbConfig)) {
