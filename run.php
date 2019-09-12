@@ -30,7 +30,8 @@ if (!isset($argv[2])) {
     exit(0);
 }
 if (!isset($argv[3])) {
-    $argv[3] = 'elastic';
+    echo 'error: missing storage name',PHP_EOL;
+    exit(0);
 }
 $regex = '/^[a-zA-Z]+$/i';
 if(!\preg_match($regex, $argv[1])){

@@ -33,6 +33,13 @@ class Example extends Processor
         return true;
     }
 
+    /**
+     * 将数据索引到elastic search中
+     * @param int    $id  索引到ES中文档的ID
+     * @param string $indexName  ES索引的名称
+     * @param array  $extra 额外信息
+     * @return array
+     */
     protected function indexDoc(int $id, string $indexName, array $extra = [])
     {
         $record = $this->db->get('homework',
