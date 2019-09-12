@@ -10,7 +10,7 @@ namespace core;
 
 use Medoo\Medoo;
 
-class Mysql
+class Db
 {
     protected static $instance = null;
     private function __construct(){}

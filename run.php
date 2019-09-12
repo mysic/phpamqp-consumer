@@ -91,7 +91,7 @@ $dbConfigFilePath = 'task' . DIRECTORY_SEPARATOR . $projectName . DIRECTORY_SEPA
 if(\file_exists($dbConfigFilePath)) {
     $dbConfig = require_once $dbConfigFilePath;
     if(!empty($dbConfig)) {
-        $db  = \core\Mysql::instance($dbConfig);
+        $db  = \core\Db::instance($dbConfig);
     }
 }
 //processor init

@@ -16,7 +16,7 @@ class Processor
     protected $db = null;
     public $config = [];
 
-    protected function __construct(Storage $storage, array $config, Mysql $db = null)
+    protected function __construct(Storage $storage, array $config, Db $db = null)
     {
         $this->config = $config;
         $this->storage = $storage;
